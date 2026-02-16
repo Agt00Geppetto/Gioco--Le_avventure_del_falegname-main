@@ -24,7 +24,7 @@ class Muri:
         self.scene.add_sprite("Walls", secchio)
 
         # Terreno
-        for x in range(-100, 10000, 1000):
+        for x in range(-1000, 10000, 1000):
             terreno = arcade.Sprite("./assets/terreno.png")
             terreno.center_x = x
             terreno.center_y = 75

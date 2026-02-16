@@ -4,7 +4,7 @@ import random
 #from inventario import InventarioSuper
 from player import Player
 from muri import Muri
-#from nemici import Enemy
+from nemici import Enemy
 #from barra_vita import Barra
 
 """
@@ -30,6 +30,7 @@ class GameView(arcade.Window):
 
         #sprites
         self.p1 = None
+        self.e1 = None
         self.barile = None
         self.secchio = None
 
@@ -39,7 +40,8 @@ class GameView(arcade.Window):
         
         self.setup()
 
-    def setup(self):   
+    def setup(self):
+        #metodo per riassumere tutte le Spritelist di arcade   
         #prinicpali sprites da far collidere col giocatore (oltre al giocatore stesso)     
         self.scene = arcade.Scene()
 
@@ -51,6 +53,11 @@ class GameView(arcade.Window):
         self.p1.center_y = 315
         self.scene.add_sprite("Player", self.p1)
 
+        self.e1 = Enemy("./assets/Legnamorta.png", 0.8)
+        self.e1.center_x = 8000
+        self.e1.center_y = 350
+        self.scene.add_sprite("Enemy", self.e1)
+
         self.muri = Muri(self.scene)
 
         self.physics_engine = arcade.PhysicsEnginePlatformer(
@@ -58,10 +65,12 @@ class GameView(arcade.Window):
             walls = self.scene["Walls"],
             # platforms = self.lista_piattafforme,
             # ladders = self.lista_scale,
-            gravity_constant = 1.0,
+            gravity_constant = 1.5,
         )
 
         self.p1.set_physics_engine(self.physics_engine)
+        self.e1.set_physics_engine(self.physics_engine)
+        
 
         self.physics_engine.enable_multi_jump(1)
         
