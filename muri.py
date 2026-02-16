@@ -3,9 +3,9 @@ import random
 
 class Muri:
 
-    def __init__(self):
-        # Lista muri
-        self.lista_muri = arcade.SpriteList(use_spatial_hash=True)
+    def __init__(self, scene):
+        
+        self.scene = scene
         self.crea_muri()
 
     def crea_muri(self):
@@ -14,14 +14,14 @@ class Muri:
         barile.center_x = random.randint(50, 10000)
         barile.center_y = 200
         barile.scale = 0.75
-        self.lista_muri.append(barile)
+        self.scene.add_sprite("Walls", barile)
 
         # Secchio
         secchio = arcade.Sprite("./assets/secchio.png")
         secchio.center_x = random.randint(50, 10000)
         secchio.center_y = 170
         secchio.scale = 0.5
-        self.lista_muri.append(secchio)
+        self.scene.add_sprite("Walls", secchio)
 
         # Terreno
         for x in range(-100, 10000, 1000):
@@ -29,7 +29,7 @@ class Muri:
             terreno.center_x = x
             terreno.center_y = 75
             terreno.scale = 1.75
-            self.lista_muri.append(terreno)
+            self.scene.add_sprite("Walls", terreno)
 
 
         # Portone (limite x, y)
@@ -39,8 +39,4 @@ class Muri:
                 portone.center_y = y
                 portone.center_x = x
                 portone.scale = 1.5
-                self.lista_muri.append(portone)
-
-
-    def draw(self):
-        self.lista_muri.draw()
+                self.scene.add_sprite("Walls", portone)

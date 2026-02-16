@@ -1,9 +1,11 @@
 import arcade
 import os
 import random
-#import inventario
+#from inventario import InventarioSuper
 from player import Player
 from muri import Muri
+#from nemici import Enemy
+#from barra_vita import Barra
 
 """
 class Item:
@@ -33,18 +35,13 @@ class GameView(arcade.Window):
 
         #fisica del gioco (base)
         self.pyshics_engine = None
-        self.lista_p1 = None
-        self.muri = None
-        self.lista_piattafforme = None
-        self.lista_scale = None
+        self.scene = None
         
         self.setup()
 
     def setup(self):   
         #prinicpali sprites da far collidere col giocatore (oltre al giocatore stesso)     
-        self.lista_p1 = arcade.SpriteList()
-        self.lista_piattafforme = arcade.SpriteList()
-        self.lista_scale = arcade.SpriteList()
+        self.scene = arcade.Scene()
 
         self.camera_sprites = arcade.Camera2D()
         self.camera_background = arcade.Camera2D()
@@ -52,15 +49,15 @@ class GameView(arcade.Window):
         self.p1 = Player("./assets/Geppetto.png", 0.5)
         self.p1.center_x = 100
         self.p1.center_y = 315
-        self.lista_p1.append(self.p1)
+        self.scene.add_sprite("Player", self.p1)
 
-        self.muri = Muri()
+        self.muri = Muri(self.scene)
 
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             player_sprite = self.p1,
-            walls = self.muri.lista_muri,
-            platforms = self.lista_piattafforme,
-            ladders = self.lista_scale,
+            walls = self.scene["Walls"],
+            # platforms = self.lista_piattafforme,
+            # ladders = self.lista_scale,
             gravity_constant = 1.0,
         )
 
@@ -81,14 +78,15 @@ class GameView(arcade.Window):
             GameView.WINDOW_HEIGHT/2,
             GameView.WINDOW_WIDTH, 
             GameView.WINDOW_HEIGHT)
-        )
+            )
 
         self.camera_sprites.use()
-        self.lista_p1.draw()
-        self.muri.draw()
+        self.scene.draw()
+
+        #self.draw_health_bar()
 
     def on_update(self, delta_time):
-        self.lista_p1.update()
+        self.scene.update(delta_time)
         self.physics_engine.update()
 
         x,y = self.p1.position

@@ -11,6 +11,9 @@ class Player(arcade.Sprite):
         self.max_jumps = 2
         self.physics_engine = None
 
+        # self.max_vita = 100
+        # self.vita = 100
+
     def set_physics_engine(self, engine):
         self.physics_engine = engine
 
