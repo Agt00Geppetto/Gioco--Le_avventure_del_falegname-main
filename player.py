@@ -13,7 +13,7 @@ class Player(arcade.Sprite):
 
 #Stato iniziale del giocatore (cioè fermo)
         self.state = "idle"
-
+        
         self.textures_idle = []
         self.textures_walk = []
         self.textures_jump = []
