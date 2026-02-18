@@ -110,8 +110,12 @@ class GameView(arcade.Window):
             pass
         elif tasto in (arcade.key.A, arcade.key.LEFT):
             self.p1.move_left()
+            if tasto in (arcade.key.A, arcade.key.LEFT) and arcade.key.MOD_SHIFT:
+                self.p1.run(change_x = -10)
         elif tasto in (arcade.key.D, arcade.key.RIGHT):
             self.p1.move_right()
+            if tasto in (arcade.key.D, arcade.key.RIGHT) and arcade.key.MOD_SHIFT:
+                self.p1.run()
 
     def on_key_release(self, tasto, modificatori):
         if tasto == arcade.key.SPACE:

@@ -27,6 +27,9 @@ class Player(arcade.Sprite):
 #Variabile che imposta la prima visione del personaggio come fermo
         self.texture = self.textures_idle[0]
 
+#Chiaramente per "invocare" la funzione
+        self.load_textures()
+
     def load_textures(self):
         pass
 
@@ -41,6 +44,9 @@ class Player(arcade.Sprite):
 
     def move_right(self):
         self.change_x = 5
+
+    def run(self):
+        self.change_x = 10
 
     def stop(self):
         self.change_x = 0
