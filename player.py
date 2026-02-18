@@ -11,8 +11,27 @@ class Player(arcade.Sprite):
         self.max_jumps = 2
         self.physics_engine = None
 
-        # self.max_vita = 100
-        # self.vita = 100
+#Stato iniziale del giocatore (cioè fermo)
+        self.state = "idle"
+
+        self.textures_idle = []
+        self.textures_walk = []
+        self.textures_jump = []
+        self.textures_attack = []
+        self.textures_dead = []
+        self.textures_hurt = []
+
+#Indice che tiene conto di ogni frame dell'immagine
+        self.cur_texture_index = 0
+
+#Variabile che imposta la prima visione del personaggio come fermo
+        self.texture = self.textures_idle[0]
+
+    def load_textures(self):
+        pass
+
+    def update_animation(self, delta_time = 1 / 60):
+        pass
 
     def set_physics_engine(self, engine):
         self.physics_engine = engine

@@ -13,3 +13,6 @@ class Enemy(arcade.Sprite):
 
     def attacco(self):
         pass
+
+    def morte(self):
+        pass
