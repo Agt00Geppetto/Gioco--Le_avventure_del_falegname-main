@@ -33,7 +33,7 @@ class Muri:
 
 
         # Portone (limite x, y)
-        for y in range(285, 10000, 65):
+        for y in range(285, 10000, 100):
             for x in range(-10000, 20, 65):
                 portone = arcade.Sprite("./assets/portone.png")
                 portone.center_y = y
