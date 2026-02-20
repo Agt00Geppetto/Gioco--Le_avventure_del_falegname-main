@@ -129,7 +129,7 @@ def main():
     window = GameView(
         800, 800, "Il mio giochino"
     )
-    window.setup()
+    #window.setup()
     arcade.run()
 
 
