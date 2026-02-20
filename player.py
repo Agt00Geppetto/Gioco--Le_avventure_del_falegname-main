@@ -25,7 +25,7 @@ class Player(arcade.Sprite):
         self.cur_texture_index = 0
 
 #Variabile che imposta la prima visione del personaggio come fermo
-        self.texture = self.textures_idle[0]
+        #self.texture = self.textures_idle[0]
 
 #Chiaramente per "invocare" la funzione
         self.load_textures()
