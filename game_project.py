@@ -96,6 +96,7 @@ class GameView(arcade.Window):
 
     def on_update(self, delta_time):
         self.scene.update(delta_time)
+        self.scene.update_animation(delta_time)
         self.physics_engine.update()
 
         x,y = self.p1.position
