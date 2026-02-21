@@ -48,7 +48,7 @@ class GameView(arcade.Window):
         self.camera_sprites = arcade.Camera2D()
         self.camera_background = arcade.Camera2D()
         
-        self.p1 = Player("./assets/Geppetto.png", 0.5)
+        self.p1 = Player(scale = 0.5)
         self.p1.center_x = 100
         self.p1.center_y = 315
         self.scene.add_sprite("Player", self.p1)
@@ -111,12 +111,12 @@ class GameView(arcade.Window):
             self.p1.jump()
         elif tasto in (arcade.key.A, arcade.key.LEFT):
             self.p1.move_left()
-            if modificatori == arcade.key.MOD_SHIFT:
-                self.p1.run(change_x = -10)
+            if modificatori & arcade.key.MOD_SHIFT:
+                self.p1.run_left()
         elif tasto in (arcade.key.D, arcade.key.RIGHT):
             self.p1.move_right()
-            if modificatori == arcade.key.MOD_SHIFT:
-                self.p1.run()
+            if modificatori & arcade.key.MOD_SHIFT:
+                self.p1.run_right()
 
     def on_key_release(self, tasto, modificatori):
         if tasto == arcade.key.SPACE:
