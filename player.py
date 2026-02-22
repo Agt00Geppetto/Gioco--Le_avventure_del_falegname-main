@@ -113,8 +113,14 @@ class Player(arcade.Sprite):
     def move_left(self):
         self.change_x = -5
 
+    def run_left(self):
+        self.change_x = -10
+
     def move_right(self):
         self.change_x = 5
+
+    def run_right(self):
+        self.change_x = 10
 
     def stop(self):
         self.change_x = 0
