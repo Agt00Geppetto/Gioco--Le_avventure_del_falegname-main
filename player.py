@@ -31,8 +31,11 @@ class Player(arcade.Sprite):
         # il percorso di ogni singola lista, altrimenti con il mio codice, solo con l'elenco delle liste, arrivavoa a circa 
         # 100 righe se non di più
 
-        base_path = os.path.join("C:", "Users", "gabriele.bonaventura", "Desktop",
-                                 "Gioco--Le_avventure_del_falegname-main-main", "assets", "spritesheets")
+        # Trova la cartella dove si trova il file .py che stai eseguendo
+        cartella_progetto = os.path.dirname(os.path.abspath(__file__))
+
+        # Unisce la cartella del progetto con le sottocartelle degli asset
+        base_path = os.path.join(cartella_progetto, "assets", "spritesheets")
 
         # Idle
         self.textures_idle = [arcade.load_texture(os.path.join(base_path, "idle", f"idle{i}.png")) for i in range(1, 5)]
