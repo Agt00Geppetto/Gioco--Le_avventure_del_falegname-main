@@ -41,6 +41,7 @@ class GameView(arcade.Window):
         self.setup()
 
     def setup(self):
+
         #metodo per riassumere tutte le Spritelist di arcade   
         #prinicpali sprites da far collidere col giocatore (oltre al giocatore stesso)     
         self.scene = arcade.Scene()
@@ -78,6 +79,7 @@ class GameView(arcade.Window):
         self.background = arcade.load_texture("./assets/sfondoG3.png")
 
     def on_draw(self):
+
         self.clear()
 
         self.camera_background.use()
@@ -95,7 +97,9 @@ class GameView(arcade.Window):
         #self.draw_health_bar()
 
     def on_update(self, delta_time):
+
         self.scene.update(delta_time)
+        self.p1.update_state()
         self.scene.update_animation(delta_time)
         self.physics_engine.update()
 
@@ -107,6 +111,7 @@ class GameView(arcade.Window):
         self.p1.update_jump_reset()
         
     def on_key_press(self, tasto, modificatori):
+
         if tasto == arcade.key.SPACE:
             self.p1.jump()
         elif tasto in (arcade.key.A, arcade.key.LEFT):
@@ -119,6 +124,7 @@ class GameView(arcade.Window):
                 self.p1.run_right()
 
     def on_key_release(self, tasto, modificatori):
+
         if tasto == arcade.key.SPACE:
             pass
         elif tasto in (arcade.key.A, arcade.key.D, arcade.key.RIGHT, arcade.key.LEFT):
